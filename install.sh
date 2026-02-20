@@ -9,3 +9,8 @@ for pkg in "${PACKAGES[@]}"; do
         stow -d "$DOTFILES_DIR" -t "$HOME" --restow "$pkg"
     fi
 done
+
+ZSH_SOURCE_LINE="source $DOTFILES_DIR/zsh/.zshrc"
+if ! grep -qF "$ZSH_SOURCE_LINE" $HOME/.zshrc 2>/dev/null; then
+    echo "$ZSH_SOURCE_LINE" >> $HOME/.zshrc
+fi
