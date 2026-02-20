@@ -2,7 +2,7 @@
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
-PACKAGES=(claude)
+PACKAGES=(claude tmux)
 
 for pkg in "${PACKAGES[@]}"; do
     if [ -d "$DOTFILES_DIR/$pkg" ]; then
