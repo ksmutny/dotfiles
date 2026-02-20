@@ -10,6 +10,11 @@ for pkg in "${PACKAGES[@]}"; do
     fi
 done
 
+GIT_INCLUDE_LINE="$DOTFILES_DIR/git/.gitconfig"
+if ! grep -qF "$GIT_INCLUDE_LINE" ~/.gitconfig 2>/dev/null; then
+    git config --global include.path "$GIT_INCLUDE_LINE"
+fi
+
 ZSH_SOURCE_LINE="source $DOTFILES_DIR/zsh/.zshrc"
 if ! grep -qF "$ZSH_SOURCE_LINE" $HOME/.zshrc 2>/dev/null; then
     echo "$ZSH_SOURCE_LINE" >> $HOME/.zshrc
