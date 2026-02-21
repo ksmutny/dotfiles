@@ -2,12 +2,18 @@
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
-PACKAGES=(claude "oh-my-posh" tmux)
+PACKAGES=("oh-my-posh" tmux)
 
 for pkg in "${PACKAGES[@]}"; do
     if [ -d "$DOTFILES_DIR/$pkg" ]; then
         stow -d "$DOTFILES_DIR" -t "$HOME" --restow "$pkg"
     fi
+done
+
+mkdir -p "$HOME/.claude"
+for file in "$DOTFILES_DIR/claude/.claude"/*; do
+    [ -e "$file" ] || continue
+    ln -sf "$file" "$HOME/.claude/$(basename "$file")"
 done
 
 GIT_INCLUDE_LINE="$DOTFILES_DIR/git/.gitconfig"
