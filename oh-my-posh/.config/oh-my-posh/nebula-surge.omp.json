@@ -141,25 +141,6 @@
         }
       ]
     }, {
-        "type": "prompt",
-        "alignment": "right",
-        "segments": [
-          {
-            "type": "executiontime",
-            "template": " {{ .FormattedMs }}",
-            "options": {
-              "style": "austin",
-              "always_enabled": true
-            },
-
-            "style": "diamond",
-            "leading_diamond": "",
-            "trailing_diamond": "",
-            "foreground": "p:white",
-            "background": "p:teal"
-          }
-        ]
-    }, {
       "type": "prompt",
       "alignment": "left",
       "newline": true,
